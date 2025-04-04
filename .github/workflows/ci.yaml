@@ -147,6 +147,8 @@ jobs:
           for asset in $(gh release view tip --json assets --jq '.assets[].id'); do
             gh release delete-asset $asset
           done
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Ghostty Tip ("Nightly")
         uses: softprops/action-gh-release@v2.2.1
